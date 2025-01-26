@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱的回忆九宫格</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 新增的九宫格样式 */
+       .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+       .photo {
+            position: relative;
+            cursor: pointer;
+        }
+
+       .photo img {
+            width: 100%;
+            height: auto;
+            filter: blur(5px);
+            transition: filter 0.3s ease;
+        }
+
+       .photo.clicked img {
+            filter: blur(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>爱的回忆九宫格</h1>
+        <p>这里记录着我们美好的瞬间，点击图片揭开回忆的面纱。</p>
+        <div class="photo-grid">
+            <div class="photo" onclick="revealPhoto(this)">
+                <img src="assets/photo1.jpg" alt="合照 1">
+            </div>
+            <div class="photo" onclick="revealPhoto(this)">
+                <img src="assets/photo2.jpg" alt="合照 2">
+            </div>
+            <div class="photo" onclick="revealPhoto(this)">
+                <img src="assets/photo3.jpg" alt="合照 3">
+            </div>
+            <div class="photo" onclick="revealPhoto(this)">
+                <img src="assets/photo4.jpg" alt="合照 4">
+            </div>
+            <div class="photo" onclick="revealPhoto(this)">
+                <img src="assets/photo5.jpg" alt="合照 5">
+            </div>
+            <div class="photo" onclick="revealPhoto(this)">
+                <img src="assets/photo6.jpg" alt="合照 6">
+            </div>
+            <div class="photo" onclick="revealPhoto(this)">
+                <img src="assets/photo7.jpg" alt="合照 7">
+            </div>
+            <div class="photo" onclick="revealPhoto(this)">
+                <img src="assets/photo8.jpg" alt="合照 8">
+            </div>
+            <div class="photo" onclick="revealPhoto(this)">
+                <img src="assets/photo9.jpg" alt="合照 9">
+            </div>
+        </div>
+        <a href="page4.html">继续冒险</a>
+    </div>
+    <script>
+        function revealPhoto(photoElement) {
+            photoElement.classList.add('clicked');
+        }
+    </script>
+</body>
+
+</html>

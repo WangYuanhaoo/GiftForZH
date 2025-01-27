@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WYH和ZH的小窝</title>
+    <title>文字空间</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -20,8 +20,19 @@
         </nav>
     </header>
     <main class="container">
-        <p>欢迎来到我们的小窝，点击菜单栏探索更多！</p>
+        <h2>文字空间</h2>
+        <textarea id="text-input" placeholder="在这里输入你的文字"></textarea>
+        <button onclick="saveText()">保存</button>
+        <p id="saved-text"></p>
     </main>
+    <script>
+        function saveText() {
+            const textInput = document.getElementById('text-input');
+            const savedText = document.getElementById('saved-text');
+            const text = textInput.value;
+            savedText.textContent = `你保存的文字是：${text}`;
+        }
+    </script>
 </body>
 
 </html>

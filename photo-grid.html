@@ -7,7 +7,6 @@
     <title>爱的回忆九宫格</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* 新增的九宫格样式 */
        .photo-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -34,8 +33,18 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>爱的回忆九宫格</h1>
+    <header>
+        <h1>WYH和ZH的小窝</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="text-space.html">文字空间</a></li>
+                <li><a href="adventure-game.html">2025新年快乐</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <h2>爱的回忆九宫格</h2>
         <p>这里记录着我们美好的瞬间，点击图片揭开回忆的面纱。</p>
         <div class="photo-grid">
             <div class="photo" onclick="revealPhoto(this)">
@@ -66,8 +75,7 @@
                 <img src="assets/photo9.jpg" alt="合照 9">
             </div>
         </div>
-        <a href="page4.html">继续冒险</a>
-    </div>
+    </main>
     <script>
         function revealPhoto(photoElement) {
             photoElement.classList.add('clicked');

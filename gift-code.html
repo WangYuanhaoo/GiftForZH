@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>礼物取件码</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>WYH和ZH的小窝</h1>
+        <nav>
+            <ul>
+                <li><a href="text-space.html">文字空间</a></li>
+                <li><a href="adventure-game.html">2025新年快乐</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <h2>最终谜题</h2>
+        <p>谜题：我们第一次约会的月份乘以我们第一次拥抱的日期，结果是多少？</p>
+        <input type="text" id="puzzle-answer" placeholder="请输入答案">
+        <button id="check-answer-button">提交答案</button>
+        <p id="puzzle-result"></p>
+    </main>
+    <script>
+        const correctAnswer = 你设定的正确答案; // 替换为实际答案
+        const answerInput = document.getElementById('puzzle-answer');
+        const checkButton = document.getElementById('check-answer-button');
+        const resultElement = document.getElementById('puzzle-result');
+
+        checkButton.addEventListener('click', function () {
+            const userAnswer = parseInt(answerInput.value);
+            if (userAnswer === correctAnswer) {
+                resultElement.textContent = `恭喜你，答对啦！礼物的取件码是：${你设定的取件码}`; // 替换为实际取件码
+            } else {
+                resultElement.textContent = "答错了哦，再想想呢。";
+            }
+        });
+    </script>
+</body>
+
+</html>

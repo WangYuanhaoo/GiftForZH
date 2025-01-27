@@ -1,17 +1,18 @@
+/* 全局样式 */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-image: url('assets/background.jpg'); 
+    background-image: url('assets/background.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; 
+    background-attachment: fixed;
 }
 
 header {
-    background-color: #005691; 
+    background-color: #005691;
     color: white;
     padding: 20px;
     text-align: center;
@@ -23,33 +24,33 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 nav ul li {
-    margin: 10px; 
+    margin: 10px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    padding: 12px 24px; 
-    border-radius: 8px; 
-    background-color: rgba(255, 255, 255, 0.1); 
-    transition: all 0.3s ease; 
-    font-size: 20px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    display: inline-block; 
+    padding: 12px 24px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    font-size: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-block;
 }
 
 nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2); 
-    transform: translateY(-2px); 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 main.container {
-    background-color: rgba(255, 255, 255, 0.8); 
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -57,16 +58,13 @@ main.container {
     max-width: 600px;
     margin: 20px auto;
     text-align: center;
-    flex: 1; 
+    flex: 1;
 }
 
 main.container p {
-    font-size: 18px; 
-}
-
-.letter-content {
-    text-align: left; 
-    text-indent: 2em; 
+    font-size: 18px;
+    text-align: left;
+    text-indent: 2em;
 }
 
 h2 {
@@ -106,4 +104,80 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+/* 文字空间样式，扩大输入区域 */
+#text-input {
+    min-height: 300px;
+    font-size: 16px;
+}
+
+/* 九宫格图片容器 */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* 单个图片项 */
+.photo-item {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 图片样式 */
+.photo-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: blur(10px); /* 加重模糊效果，可根据需要调整数值 */
+    transition: filter 0.3s ease;
+}
+
+/* 图片遮罩层，用于点击去除遮挡 */
+.photo-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 加重遮罩层透明度，可根据需要调整数值 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+/* 点击后去除遮挡和模糊效果 */
+.photo-item.clicked img {
+    filter: blur(0);
+}
+
+.photo-item.clicked .overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 图片放大查看样式 */
+.photo-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.photo-modal img {
+    max-width: 90%;
+    max-height: 90%;
 }

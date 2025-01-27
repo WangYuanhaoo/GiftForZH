@@ -4,8 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文字空间</title>
+    <title>共享文字空间</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        #text-input {
+            min-height: 300px;
+            font-size: 16px;
+        }
+    </style>
+    <!-- 引入 LeanCloud SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.15.0/dist/av-min.js"></script>
 </head>
 
 <body>
@@ -14,7 +22,7 @@
         <nav>
             <ul>
                 <li><a href="index.html">首页</a></li>
-                <li><a href="text-space.html">文字空间</a></li>
+                <li><a href="text-space.html">共享文字空间</a></li>
                 <li><a href="adventure-game.html">2025新年快乐</a></li>
             </ul>
         </nav>
@@ -23,14 +31,46 @@
         <h2>文字空间</h2>
         <textarea id="text-input" placeholder="在这里输入你的文字"></textarea>
         <button onclick="saveText()">保存</button>
-        <p id="saved-text"></p>
     </main>
     <script>
+        // 初始化 LeanCloud
+        AV.init({
+            appId: 'CFHz7hSn5XR97fhpz6gTG8ea-gzGzoHsz', // 替换为你在 LeanCloud 中获取的 App ID
+            appKey: '15qb6OkijxieerQEhpssBrMq', // 替换为你在 LeanCloud 中获取的 App Key
+            serverURL: 'https://cfhz7hsn.lc-cn-n1-shared.com' // 替换为你在 LeanCloud 控制台获取的 API 服务器地址
+        });
+
+        const textInput = document.getElementById('text-input');
+        const SharedText = AV.Object.extend('SharedText');
+
+        // 页面加载时获取保存的文本
+        const query = new AV.Query(SharedText);
+        query.first().then((textObj) => {
+            if (textObj) {
+                textInput.value = textObj.get('content');
+            }
+        }).catch((error) => {
+            console.error('获取文本时出错:', error);
+        });
+
         function saveText() {
-            const textInput = document.getElementById('text-input');
-            const savedText = document.getElementById('saved-text');
             const text = textInput.value;
-            savedText.textContent = `你保存的文字是：${text}`;
+            query.first().then((textObj) => {
+                if (textObj) {
+                    // 如果已经存在记录，更新内容
+                    textObj.set('content', text);
+                    return textObj.save();
+                } else {
+                    // 如果不存在记录，创建新记录
+                    const newText = new SharedText();
+                    newText.set('content', text);
+                    return newText.save();
+                }
+            }).then(() => {
+                console.log('文本保存成功');
+            }).catch((error) => {
+                console.error('保存文本时出错:', error);
+            });
         }
     </script>
 </body>
